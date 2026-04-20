@@ -1,25 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mentis Libra — Philosophy Blog</title>
+<title>The Macro Desk — Daily Macro & Geopolitical Analysis</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 /* ── RESET & ROOT ─────────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --ink:     #0e0b05;
-  --ink2:    #1a1508;
-  --parch:   #f2ead8;
-  --gold:    #c9a84c;
-  --gold2:   #e8c96a;
-  --gold3:   #8b6010;
-  --muted:   rgba(242,234,216,0.5);
-  --border:  rgba(201,168,76,0.18);
-  --border2: rgba(201,168,76,0.35);
-  --cream:   rgba(242,234,216,0.06);
+  --ink:     #1e1e1c;
+  --ink2:    #2C2C2A;
+  --parch:   #F1EFE8;
+  --gold:    #D3D1C7;
+  --gold2:   #F1EFE8;
+  --gold3:   #888780;
+  --muted:   rgba(241,239,232,0.5);
+  --border:  rgba(211,209,199,0.18);
+  --border2: rgba(211,209,199,0.38);
+  --cream:   rgba(241,239,232,0.04);
+  --accent:  #B4B2A9;
 }
 
 html { scroll-behavior: smooth; }
@@ -39,37 +41,40 @@ body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
-/* ── LANGUAGE SWITCHER ──────────────────────────────────────── */
+/* ── TOP BAR ──────────────────────────────────────────────── */
 .lang-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 40px;
   height: 48px;
-  background: rgba(14,11,5,0.96);
+  background: rgba(28,28,26,0.97);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
 
 .lang-logo {
   font-family: 'Cinzel', serif;
-  font-size: 12px; letter-spacing: 0.35em; color: var(--gold);
+  font-size: 11px; letter-spacing: 0.38em; color: var(--gold);
   text-decoration: none;
 }
 
-.lang-links { display: flex; gap: 6px; align-items: center; }
-
-.lang-btn {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.25em;
-  text-transform: uppercase; padding: 5px 14px;
-  border: 1px solid var(--border); background: transparent;
-  color: var(--muted); cursor: pointer; transition: all 0.25s;
+.lang-right {
+  display: flex; gap: 6px; align-items: center;
 }
-.lang-btn:hover, .lang-btn.active {
-  border-color: var(--gold); color: var(--gold);
-  background: rgba(201,168,76,0.08);
+
+.tag-live {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.25em;
+  text-transform: uppercase; padding: 4px 12px;
+  border: 1px solid rgba(211,209,199,0.3);
+  color: var(--gold); background: rgba(211,209,199,0.06);
+}
+
+.tag-ch {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.15em;
+  color: var(--muted); padding: 0 8px;
 }
 
 /* ── NAV ────────────────────────────────────────────────────── */
@@ -77,7 +82,7 @@ nav {
   position: fixed; top: 48px; left: 0; right: 0; z-index: 999;
   display: flex; align-items: center; justify-content: center; gap: 40px;
   height: 52px;
-  background: rgba(14,11,5,0.94);
+  background: rgba(28,28,26,0.95);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
 }
@@ -95,7 +100,6 @@ nav a::after {
 nav a:hover { color: var(--gold); }
 nav a:hover::after { transform: scaleX(1); }
 
-/* Instagram link in nav */
 nav a.insta {
   display: flex; align-items: center; gap: 6px;
   border: 1px solid var(--border); padding: 6px 14px;
@@ -103,7 +107,7 @@ nav a.insta {
 }
 nav a.insta:hover {
   border-color: var(--gold); color: var(--gold);
-  background: rgba(201,168,76,0.06);
+  background: rgba(211,209,199,0.06);
 }
 nav a.insta::after { display: none; }
 
@@ -119,16 +123,15 @@ nav a.insta::after { display: none; }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 70% at 50% 55%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 70% at 50% 55%, rgba(180,178,169,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* Big ghost text */
 .hero-ghost {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-48%);
-  font-family: 'Cinzel', serif; font-size: clamp(5rem, 18vw, 18rem);
-  font-weight: 700; letter-spacing: 0.05em; white-space: nowrap;
-  color: rgba(201,168,76,0.028); pointer-events: none; user-select: none;
+  font-family: 'Cinzel', serif; font-size: clamp(4rem, 16vw, 16rem);
+  font-weight: 700; letter-spacing: 0.06em; white-space: nowrap;
+  color: rgba(211,209,199,0.025); pointer-events: none; user-select: none;
   line-height: 1;
 }
 
@@ -149,7 +152,7 @@ nav a.insta::after { display: none; }
 
 .hero-sub {
   font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted);
-  max-width: 520px; font-style: italic; margin-bottom: 50px;
+  max-width: 540px; font-style: italic; margin-bottom: 50px;
   opacity: 0; animation: fadeUp 1s 0.6s forwards;
 }
 
@@ -159,28 +162,24 @@ nav a.insta::after { display: none; }
   opacity: 0; animation: fadeIn 1s 0.8s forwards;
 }
 
-/* Floating quote */
-.hero-quote {
-  max-width: 580px; position: relative;
+/* Score badge hero */
+.hero-score {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 40px;
   opacity: 0; animation: fadeUp 1s 1s forwards;
 }
-.hero-quote::before {
-  content: '\201C';
-  font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 300;
-  color: rgba(201,168,76,0.15); position: absolute; top: -40px; left: -20px;
-  line-height: 1;
+.score-pill {
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 8px 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  display: flex; align-items: center; gap: 8px;
 }
-.hero-quote blockquote {
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.5vw, 1.7rem);
-  font-style: italic; font-weight: 300; line-height: 1.5; color: var(--parch);
-  margin-bottom: 16px;
-}
-.hero-quote cite {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--gold); font-style: normal;
+.score-pill .val {
+  font-size: 15px; font-weight: 600; color: var(--gold); letter-spacing: 0;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-/* ── SCROLL INDICATOR ───────────────────────────────────────── */
 .scroll-hint {
   position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -188,17 +187,16 @@ nav a.insta::after { display: none; }
 }
 .scroll-hint span {
   font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 0.4em;
-  text-transform: uppercase; color: rgba(201,168,76,0.4);
+  text-transform: uppercase; color: rgba(211,209,199,0.4);
 }
 .scroll-line {
   width: 1px; height: 40px;
-  background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+  background: linear-gradient(to bottom, rgba(211,209,199,0.5), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
 /* ── SECTION SHARED ─────────────────────────────────────────── */
 section { position: relative; z-index: 1; }
-
 .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
 
 .section-header { text-align: center; margin-bottom: 60px; }
@@ -211,7 +209,7 @@ section { position: relative; z-index: 1; }
   font-weight: 300; font-style: italic;
 }
 
-/* ── ABOUT BAND ─────────────────────────────────────────────── */
+/* ── ABOUT ─────────────────────────────────────────────────── */
 #about {
   padding: 120px 0;
   background: linear-gradient(to bottom, var(--ink), var(--ink2), var(--ink));
@@ -222,7 +220,6 @@ section { position: relative; z-index: 1; }
   display: grid; grid-template-columns: 1fr 2px 1fr; gap: 60px;
   align-items: start;
 }
-
 .about-divider { background: var(--border2); margin-top: 20px; }
 
 .about-text .label {
@@ -251,108 +248,173 @@ section { position: relative; z-index: 1; }
 }
 .pillar-text p { font-size: 0.9rem; color: var(--muted); }
 
-/* ── BLOG ARTICLES ──────────────────────────────────────────── */
-#articles { padding: 120px 0; }
+/* ── DAILY BRIEF ─────────────────────────────────────────────── */
+#briefs { padding: 120px 0; }
 
-.articles-grid {
+.briefs-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
 }
 
-.article-card {
+.brief-card {
   border: 1px solid var(--border); padding: 40px 32px;
   background: var(--cream); transition: all 0.35s; cursor: pointer;
   position: relative; overflow: hidden;
 }
-.article-card::before {
+.brief-card::before {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0;
   height: 2px; background: var(--gold); transform: scaleX(0);
   transition: transform 0.4s; transform-origin: left;
 }
-.article-card:hover {
-  background: rgba(201,168,76,0.06); border-color: var(--border2);
+.brief-card:hover {
+  background: rgba(211,209,199,0.05); border-color: var(--border2);
   transform: translateY(-4px);
 }
-.article-card:hover::before { transform: scaleX(1); }
+.brief-card:hover::before { transform: scaleX(1); }
 
-.article-num {
+.brief-num {
   font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.3em;
-  color: rgba(201,168,76,0.4); margin-bottom: 20px; display: block;
+  color: rgba(211,209,199,0.35); margin-bottom: 20px; display: block;
 }
-.article-tag {
+.brief-tag {
   font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 0.2em;
   text-transform: uppercase; padding: 3px 10px; border: 1px solid var(--border);
   color: var(--gold); display: inline-block; margin-bottom: 16px;
 }
-.article-card h3 {
+.brief-card h3 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.45rem;
   font-weight: 400; line-height: 1.35; margin-bottom: 14px;
 }
-.article-card p {
+.brief-card p {
   font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 24px;
 }
-.article-read {
+
+/* Score indicator */
+.brief-score {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.score-bar-bg {
+  flex: 1; height: 3px; background: rgba(211,209,199,0.1);
+  border-radius: 2px; overflow: hidden;
+}
+.score-bar-fill { height: 100%; border-radius: 2px; background: var(--gold); }
+.score-num {
+  font-family: 'Cinzel', serif; font-size: 9px; color: var(--gold); min-width: 32px; text-align: right;
+}
+
+.brief-action {
   font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--gold);
+  text-transform: uppercase;
   display: flex; align-items: center; gap: 8px;
 }
-.article-read::after {
-  content: '→'; transition: transform 0.2s;
-}
-.article-card:hover .article-read::after { transform: translateX(5px); }
+.brief-action.buy { color: #97C459; }
+.brief-action.wait { color: var(--gold); }
+.brief-action.caution { color: #EF9F27; }
+.brief-action::after { content: '→'; transition: transform 0.2s; }
+.brief-card:hover .brief-action::after { transform: translateX(5px); }
 
-/* ── DAILY QUOTE ─────────────────────────────────────────────── */
-#quote {
+/* ── LIVE SIGNAL ─────────────────────────────────────────────── */
+#signal {
   padding: 120px 0;
-  background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(180,178,169,0.04) 0%, transparent 70%);
   border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
 
-.quote-display { text-align: center; max-width: 760px; margin: 0 auto; }
-.quote-display .orn { color: var(--gold); font-size: 2rem; opacity: 0.4; display: block; margin-bottom: 24px; }
-.quote-display blockquote {
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem,3vw,2.1rem);
-  font-style: italic; font-weight: 300; line-height: 1.5; margin-bottom: 28px;
+.signal-display { text-align: center; max-width: 760px; margin: 0 auto; }
+.signal-display .orn { color: var(--gold); font-size: 1.4rem; opacity: 0.4; display: block; margin-bottom: 24px; letter-spacing: 0.5em; }
+
+/* Main score ring */
+.score-ring-wrap {
+  display: flex; justify-content: center; margin-bottom: 40px;
 }
-.quote-display cite {
-  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.35em;
-  text-transform: uppercase; color: var(--gold); font-style: normal;
+.score-ring {
+  width: 140px; height: 140px; border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative;
 }
-.quote-nav {
-  display: flex; justify-content: center; gap: 12px; margin-top: 40px;
+.score-ring::before {
+  content: ''; position: absolute; inset: 8px; border-radius: 50%;
+  border: 0.5px solid var(--border);
 }
-.quote-btn {
+.score-ring .big-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+  color: var(--parch); line-height: 1;
+}
+.score-ring .score-label {
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold); margin-top: 4px;
+}
+
+.signal-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  margin-bottom: 40px;
+}
+.signal-item {
+  padding: 20px 16px; border: 1px solid var(--border); text-align: center;
+  background: var(--cream);
+}
+.signal-item .s-label {
+  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block;
+}
+.signal-item .s-val {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300;
+  color: var(--parch); line-height: 1; margin-bottom: 4px; display: block;
+}
+.signal-item .s-change {
+  font-family: 'Cinzel', serif; font-size: 8px;
+}
+.up { color: #97C459; }
+.down { color: #F09595; }
+.neutral { color: var(--gold); }
+
+.decision-block {
+  padding: 30px; border: 1px solid var(--border2);
+  background: rgba(211,209,199,0.03); margin-bottom: 30px;
+}
+.decision-block .d-label {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px; display: block;
+}
+.decision-block .d-action {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem,4vw,2.8rem);
+  font-weight: 300; font-style: italic; color: var(--gold); margin-bottom: 8px;
+}
+.decision-block .d-conf {
+  font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.signal-nav {
+  display: flex; justify-content: center; gap: 12px;
+}
+.signal-btn {
   font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.2em;
   text-transform: uppercase; padding: 8px 20px; border: 1px solid var(--border);
   background: transparent; color: var(--muted); cursor: pointer; transition: all 0.25s;
 }
-.quote-btn:hover { border-color: var(--gold); color: var(--gold); }
+.signal-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-/* ── PHILOSOPHERS ────────────────────────────────────────────── */
-#philosophers { padding: 120px 0; }
+/* ── MARKET DATA ─────────────────────────────────────────────── */
+#markets { padding: 120px 0; }
 
-.phil-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.markets-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
 
-.phil-card {
-  padding: 32px 24px; border: 1px solid var(--border);
-  background: var(--cream); transition: all 0.3s; text-align: center;
-  position: relative; overflow: hidden;
+.market-card {
+  padding: 28px 22px; border: 1px solid var(--border);
+  background: var(--cream); transition: all 0.3s;
 }
-.phil-card::after {
-  content: attr(data-initial);
-  position: absolute; bottom: -15px; right: -5px;
-  font-family: 'Cormorant Garamond', serif; font-size: 7rem; font-weight: 300;
-  color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none;
+.market-card:hover { background: rgba(211,209,199,0.06); border-color: var(--border2); }
+.market-ticker {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.3em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 8px; display: block;
 }
-.phil-card:hover { background: rgba(201,168,76,0.07); border-color: var(--border2); }
-.phil-era {
-  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 0.3em;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 10px; display: block;
+.market-card h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300;
+  margin-bottom: 6px; color: var(--parch);
 }
-.phil-card h4 {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400;
-  margin-bottom: 8px;
-}
-.phil-school { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+.market-change { font-size: 0.85rem; font-style: italic; color: var(--muted); }
+.mup { color: #97C459; } .mdown { color: #F09595; } .mflat { color: var(--gold); }
 
 /* ── INSTAGRAM CTA ───────────────────────────────────────────── */
 #instagram {
@@ -367,7 +429,11 @@ section { position: relative; z-index: 1; }
   font-weight: 300; margin-bottom: 16px;
 }
 .insta-cta h2 em { font-style: italic; color: var(--gold); }
-.insta-cta p { color: var(--muted); font-size: 1.05rem; margin-bottom: 40px; font-style: italic; }
+.insta-cta p { color: var(--muted); font-size: 1.05rem; margin-bottom: 14px; font-style: italic; }
+.insta-bio {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.2em;
+  color: var(--gold); margin-bottom: 40px; display: block;
+}
 
 .insta-btn {
   display: inline-flex; align-items: center; gap: 12px;
@@ -383,41 +449,41 @@ section { position: relative; z-index: 1; }
 .insta-btn:hover { color: var(--ink); }
 .insta-btn:hover::before { transform: translateX(0); }
 .insta-btn span { position: relative; z-index: 1; }
-
-/* Instagram icon SVG inline */
 .insta-icon { width: 18px; height: 18px; position: relative; z-index: 1; fill: currentColor; }
 
-/* Sample posts grid */
 .insta-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 2px;
   max-width: 600px; margin: 60px auto 0;
 }
 .insta-post {
-  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-  padding: 24px; text-align: center;
+  aspect-ratio: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 20px; text-align: center;
   border: 1px solid var(--border); position: relative; overflow: hidden;
-  transition: all 0.3s;
+  transition: all 0.3s; background: var(--ink2);
 }
 .insta-post:hover { border-color: var(--border2); transform: scale(1.02); }
 .insta-post::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(201,168,76,0.1), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(180,178,169,0.07), transparent 70%);
 }
-.ip1 { background: linear-gradient(145deg,#0d0b06,#1c1508); }
-.ip2 { background: linear-gradient(145deg,#060d08,#0a1a0d); }
-.ip3 { background: linear-gradient(145deg,#0d0606,#1a0a08); }
-.ip4 { background: linear-gradient(145deg,#06080d,#0a0d1a); }
-.ip5 { background: linear-gradient(145deg,#0d0b06,#201808); }
-.ip6 { background: linear-gradient(145deg,#080d06,#0f1a0a); }
-.insta-post q {
-  font-family: 'Cormorant Garamond', serif; font-size: 0.75rem;
-  font-style: italic; font-weight: 300; color: var(--parch);
-  line-height: 1.4; position: relative; z-index: 1;
+.insta-post .ip-label {
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 0.25em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 8px;
+  position: relative; z-index: 1;
 }
-.insta-post .ip-author {
+.insta-post .ip-val {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300;
+  color: var(--parch); position: relative; z-index: 1; line-height: 1.2;
+}
+.insta-post .ip-change {
+  font-family: 'Cinzel', serif; font-size: 8px; margin-top: 4px;
+  position: relative; z-index: 1;
+}
+.insta-post .ip-tag {
   position: absolute; bottom: 8px; right: 10px;
   font-family: 'Cinzel', serif; font-size: 6px; letter-spacing: 0.2em;
-  color: rgba(201,168,76,0.35); z-index: 1;
+  color: rgba(211,209,199,0.3); z-index: 1;
 }
 
 /* ── FOOTER ──────────────────────────────────────────────────── */
@@ -427,22 +493,27 @@ footer {
   text-align: center;
 }
 .footer-logo {
-  font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 0.25em;
+  font-family: 'Cinzel', serif; font-size: 16px; letter-spacing: 0.28em;
   color: var(--gold); margin-bottom: 10px; display: block;
 }
 .footer-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
   font-size: 1rem; color: var(--muted); margin-bottom: 28px;
 }
-.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
 .footer-links a {
   font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 0.3em;
   text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--gold); }
+.footer-disclaimer {
+  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 0.2em;
+  color: rgba(241,239,232,0.25); text-transform: uppercase; margin-bottom: 12px;
+  max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8;
+}
 .footer-copy {
   font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 0.3em;
-  color: rgba(242,234,216,0.2); text-transform: uppercase;
+  color: rgba(241,239,232,0.2); text-transform: uppercase;
 }
 
 /* ── ANIMATIONS ──────────────────────────────────────────────── */
@@ -458,8 +529,6 @@ footer {
   0%,100% { opacity:0.4; transform:scaleY(1); }
   50%      { opacity:1;   transform:scaleY(1.2); }
 }
-
-/* Reveal on scroll */
 .reveal {
   opacity: 0; transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s ease;
@@ -468,16 +537,17 @@ footer {
 
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width:900px) {
-  .articles-grid { grid-template-columns:1fr; }
+  .briefs-grid { grid-template-columns:1fr; }
   .about-grid { grid-template-columns:1fr; }
   .about-divider { display:none; }
-  .phil-grid { grid-template-columns:repeat(2,1fr); }
+  .markets-grid { grid-template-columns:repeat(2,1fr); }
+  .signal-grid { grid-template-columns:repeat(2,1fr); }
   .insta-grid { grid-template-columns:repeat(2,1fr); max-width:400px; }
   nav { gap: 16px; padding: 0 10px; flex-wrap: wrap; height: auto; padding: 8px 16px; top: 48px; }
   .lang-bar { padding: 0 16px; }
 }
 @media (max-width:600px) {
-  .phil-grid { grid-template-columns:1fr 1fr; }
+  .markets-grid { grid-template-columns:1fr 1fr; }
   nav a:not(.insta) { display: none; }
 }
 </style>
@@ -485,15 +555,13 @@ footer {
 <body>
 
 <!-- ═══════════════════════════════════════
-     LANGUAGE BAR
+     TOP BAR
 ═══════════════════════════════════════ -->
 <div class="lang-bar">
-  <a href="#" class="lang-logo">MENTIS · LIBRA</a>
-  <div class="lang-links">
-    <button class="lang-btn active" onclick="setLang('en',this)">🇬🇧 EN</button>
-    <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
-    <button class="lang-btn" onclick="setLang('it',this)">🇮🇹 IT</button>
-    <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
+  <a href="#" class="lang-logo">THE MACRO DESK</a>
+  <div class="lang-right">
+    <span class="tag-live">● Live · CEST</span>
+    <span class="tag-ch">🇨🇭 Switzerland</span>
   </div>
 </div>
 
@@ -501,13 +569,13 @@ footer {
      NAV
 ═══════════════════════════════════════ -->
 <nav>
-  <a href="#about"       data-i18n="nav_about">About</a>
-  <a href="#articles"    data-i18n="nav_articles">Articles</a>
-  <a href="#quote"       data-i18n="nav_quote">Daily Quote</a>
-  <a href="#philosophers" data-i18n="nav_phil">Philosophers</a>
-  <a href="https://instagram.com/mentis.libra" target="_blank" class="insta">
+  <a href="#about">About</a>
+  <a href="#briefs">Daily Briefs</a>
+  <a href="#signal">Live Signal</a>
+  <a href="#markets">Markets</a>
+  <a href="https://instagram.com/themacrodesks" target="_blank" class="insta">
     <svg class="insta-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    @mentis.libra
+    @TheMacroDesk
   </a>
 </nav>
 
@@ -515,20 +583,23 @@ footer {
      HERO
 ═══════════════════════════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-ghost">ML</div>
-  <p class="hero-tag" data-i18n="hero_tag">Ancient Wisdom · Modern Life</p>
+  <div class="hero-ghost">TMD</div>
+  <p class="hero-tag">Macro · Geopolitics · Markets · Daily</p>
   <h1>
-    <span data-i18n="hero_h1a">The Balance</span><br>
-    <em data-i18n="hero_h1b">of the Mind</em>
+    The Signal<br>
+    <em>Behind the Noise</em>
   </h1>
-  <p class="hero-sub" data-i18n="hero_sub">Philosophy as a way of life. The wisdom of the great thinkers, made alive for every day.</p>
+  <p class="hero-sub">Institutional macro analysis. What hedge funds read every morning — delivered to your feed, 1 to 3 times daily.</p>
   <div class="hero-divider"></div>
-  <div class="hero-quote">
-    <blockquote data-i18n="hero_quote">"You have power over your mind — not outside events. Realize this, and you will find strength."</blockquote>
-    <cite>— Marcus Aurelius · Meditations</cite>
+
+  <div class="hero-score">
+    <div class="score-pill">Macro Score <span class="val" id="hero-score-val">—</span></div>
+    <div class="score-pill">Signal <span class="val" id="hero-signal-val">—</span></div>
+    <div class="score-pill">Confidence <span class="val" id="hero-conf-val">—</span></div>
   </div>
+
   <div class="scroll-hint">
-    <span data-i18n="scroll">Scroll</span>
+    <span>Scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
@@ -540,33 +611,33 @@ footer {
   <div class="section-wrap">
     <div class="about-grid reveal">
       <div class="about-text">
-        <span class="label" data-i18n="about_label">The Mission</span>
-        <h3 data-i18n="about_h3">Philosophy shouldn't live only in universities.</h3>
-        <p data-i18n="about_p1">Mentis Libra was born from a simple conviction: the great thinkers of antiquity had already understood what we are only now rediscovering — about anxiety, resilience, meaning, and the art of living.</p>
-        <p data-i18n="about_p2">Every article, every quote, every reflection here is an invitation to pause, to think, and to find your own balance.</p>
+        <span class="label">The Approach</span>
+        <h3>Markets don't move on numbers alone — they move on geopolitics, fear, and narrative.</h3>
+        <p>The Macro Desk was built on one conviction: retail investors deserve the same quality of analysis that institutional traders use every morning. Not noise. Signal.</p>
+        <p>Every brief follows a rigorous hedge fund framework — macro snapshot, news impact, scoring, scenarios with probabilities, and a clear directional call. Based in Switzerland 🇨🇭, published in CEST.</p>
       </div>
       <div class="about-divider"></div>
       <div class="pillars">
-        <span class="label" data-i18n="pillars_label">Three Pillars</span>
+        <span class="label">Three Pillars</span>
         <div class="pillar">
           <span class="pillar-num">I</span>
           <div class="pillar-text">
-            <h4 data-i18n="pillar1_h">Inspiration</h4>
-            <p data-i18n="pillar1_p">Quotes and reflections that touch the heart before the mind.</p>
+            <h4>Macro Analysis</h4>
+            <p>Global economics, central bank dynamics, inflation, rates — the forces that move every asset class.</p>
           </div>
         </div>
         <div class="pillar">
           <span class="pillar-num">II</span>
           <div class="pillar-text">
-            <h4 data-i18n="pillar2_h">Education</h4>
-            <p data-i18n="pillar2_p">Philosophical ideas explained simply, without losing their depth.</p>
+            <h4>Geopolitical Risk</h4>
+            <p>Wars, sanctions, energy shocks, diplomatic flashpoints — translated into market impact in real time.</p>
           </div>
         </div>
         <div class="pillar">
           <span class="pillar-num">III</span>
           <div class="pillar-text">
-            <h4 data-i18n="pillar3_h">Dialogue</h4>
-            <p data-i18n="pillar3_p">Questions that invite you to reflect and discover your own truth.</p>
+            <h4>Scenario Thinking</h4>
+            <p>Three scenarios daily — bullish, neutral, bearish — with probabilities and actionable positioning.</p>
           </div>
         </div>
       </div>
@@ -575,62 +646,86 @@ footer {
 </section>
 
 <!-- ═══════════════════════════════════════
-     ARTICLES
+     DAILY BRIEFS
 ═══════════════════════════════════════ -->
-<section id="articles">
+<section id="briefs">
   <div class="section-wrap">
     <div class="section-header reveal">
-      <span class="eyebrow" data-i18n="articles_eyebrow">Latest Articles</span>
-      <h2 data-i18n="articles_h2">Thoughts worth dwelling on</h2>
+      <span class="eyebrow">What We Cover</span>
+      <h2>Analysis built for decision-making</h2>
     </div>
-    <div class="articles-grid">
+    <div class="briefs-grid">
 
-      <div class="article-card reveal">
-        <span class="article-num">001</span>
-        <span class="article-tag">Stoicism</span>
-        <h3 data-i18n="art1_h">Marcus Aurelius and the Art of Letting Go</h3>
-        <p data-i18n="art1_p">Two thousand years ago, the most powerful man in the world wrote in his journal about fear, impermanence, and the only thing we truly control.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">01</span>
+        <span class="brief-tag">Morning Brief</span>
+        <h3>Europe Open · 09:00 CEST</h3>
+        <p>Pre-market macro snapshot. Key news impact table. Positioning for the European session and US futures outlook.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:62%"></div></div>
+          <span class="score-num">62 / 100</span>
+        </div>
+        <div class="brief-action wait">Cautious Wait</div>
       </div>
 
-      <div class="article-card reveal">
-        <span class="article-num">002</span>
-        <span class="article-tag">Existentialism</span>
-        <h3 data-i18n="art2_h">Camus: Finding Joy in the Absurd</h3>
-        <p data-i18n="art2_p">What does it mean to live fully when nothing has an inherent meaning? Albert Camus offers an answer that still resonates a century later.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">02</span>
+        <span class="brief-tag">Midday Update</span>
+        <h3>Europe Midday · 12:00 CEST</h3>
+        <p>Real-time pivot analysis. Re-scored if major events change the picture. US open preparation with sector rotation signals.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:40%"></div></div>
+          <span class="score-num">40 / 100</span>
+        </div>
+        <div class="brief-action caution">Defensive</div>
       </div>
 
-      <div class="article-card reveal">
-        <span class="article-num">003</span>
-        <span class="article-tag">Buddhism</span>
-        <h3 data-i18n="art3_h">The Buddha's Teaching on Suffering and Choice</h3>
-        <p data-i18n="art3_p">Pain is inevitable. Suffering, according to the Buddha, is a choice. Here is the distinction that changes everything.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">03</span>
+        <span class="brief-tag">Scenario Brief</span>
+        <h3>Three Scenarios · Daily</h3>
+        <p>Bull / Neutral / Bear with explicit trigger conditions, market reaction forecasts, and probability-weighted positioning.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:75%"></div></div>
+          <span class="score-num">75 / 100</span>
+        </div>
+        <div class="brief-action buy">Buy Selective</div>
       </div>
 
-      <div class="article-card reveal">
-        <span class="article-num">004</span>
-        <span class="article-tag">Stoicism</span>
-        <h3 data-i18n="art4_h">Epictetus: Freedom Begins in the Mind</h3>
-        <p data-i18n="art4_p">Born a slave, he became one of the freest men who ever lived. The philosophy of Epictetus is a lesson in what no one can ever take from you.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">04</span>
+        <span class="brief-tag">Geopolitical</span>
+        <h3>Oil · Iran · Hormuz · Fed</h3>
+        <p>Deep-dive on active geopolitical flashpoints and their direct transmission to energy prices, inflation, and rate expectations.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:53%"></div></div>
+          <span class="score-num">53 / 100</span>
+        </div>
+        <div class="brief-action wait">Monitor</div>
       </div>
 
-      <div class="article-card reveal">
-        <span class="article-num">005</span>
-        <span class="article-tag">Nietzsche</span>
-        <h3 data-i18n="art5_h">Become Who You Are</h3>
-        <p data-i18n="art5_p">Three words, the shortest sentence, the deepest philosophy. Nietzsche does not ask you to improve yourself. He asks you to discover yourself.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">05</span>
+        <span class="brief-tag">Earnings</span>
+        <h3>Tech · Banks · Semis</h3>
+        <p>Earnings season analysis through a macro lens. AI capex, net interest margin, semiconductor demand — what it means for the index.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:80%"></div></div>
+          <span class="score-num">80 / 100</span>
+        </div>
+        <div class="brief-action buy">Overweight Tech</div>
       </div>
 
-      <div class="article-card reveal">
-        <span class="article-num">006</span>
-        <span class="article-tag">Pascal</span>
-        <h3 data-i18n="art6_h">The Heart Has Its Reasons</h3>
-        <p data-i18n="art6_p">Pascal understood something that neuroscience confirms today: our deepest decisions are not made by reason. And that is not a flaw — it is our humanity.</p>
-        <div class="article-read" data-i18n="read_more">Read more</div>
+      <div class="brief-card reveal">
+        <span class="brief-num">06</span>
+        <span class="brief-tag">Post-Mortem</span>
+        <h3>Weekly Review · Sunday</h3>
+        <p>Was the bias correct? What signals were missed? A disciplined review of the week's calls — the most honest content on the feed.</p>
+        <div class="brief-score">
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:68%"></div></div>
+          <span class="score-num">68 / 100</span>
+        </div>
+        <div class="brief-action wait">Review</div>
       </div>
 
     </div>
@@ -638,75 +733,110 @@ footer {
 </section>
 
 <!-- ═══════════════════════════════════════
-     DAILY QUOTE
+     LIVE SIGNAL
 ═══════════════════════════════════════ -->
-<section id="quote">
+<section id="signal">
   <div class="section-wrap">
     <div class="section-header reveal">
-      <span class="eyebrow" data-i18n="quote_eyebrow">Daily Wisdom</span>
-      <h2 data-i18n="quote_h2">One thought to carry with you</h2>
+      <span class="eyebrow">Today's Reading</span>
+      <h2>The daily signal</h2>
     </div>
-    <div class="quote-display reveal">
-      <span class="orn">✦</span>
-      <blockquote id="daily-quote">"The happiness of your life depends upon the quality of your thoughts."</blockquote>
-      <cite id="daily-author">— Marcus Aurelius</cite>
-      <div class="quote-nav">
-        <button class="quote-btn" onclick="prevQuote()" data-i18n="prev_q">← Previous</button>
-        <button class="quote-btn" onclick="nextQuote()" data-i18n="next_q">Next →</button>
+    <div class="signal-display reveal">
+      <span class="orn">· · ·</span>
+
+      <div class="score-ring-wrap">
+        <div class="score-ring">
+          <span class="big-num" id="sig-score">53</span>
+          <span class="score-label">Global Score</span>
+        </div>
+      </div>
+
+      <div class="signal-grid">
+        <div class="signal-item">
+          <span class="s-label">S&P 500</span>
+          <span class="s-val">7 050</span>
+          <span class="s-change down">–0.6%</span>
+        </div>
+        <div class="signal-item">
+          <span class="s-label">WTI Crude</span>
+          <span class="s-val">$90</span>
+          <span class="s-change down">+7.1%</span>
+        </div>
+        <div class="signal-item">
+          <span class="s-label">Gold</span>
+          <span class="s-val">$4 750</span>
+          <span class="s-change down">–1.7%</span>
+        </div>
+        <div class="signal-item">
+          <span class="s-label">VIX</span>
+          <span class="s-val">> 20</span>
+          <span class="s-change down">↑ Rising</span>
+        </div>
+      </div>
+
+      <div class="decision-block">
+        <span class="d-label">Today's Decision · 20 April 2026 · 12:00 CEST</span>
+        <div class="d-action" id="sig-decision">Defensive Caution</div>
+        <div class="d-conf" id="sig-conf">Confidence 72% · Ceasefire expires tonight 20:00 ET</div>
+      </div>
+
+      <div class="signal-nav">
+        <button class="signal-btn">← Previous</button>
+        <button class="signal-btn">Next →</button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════
-     PHILOSOPHERS
+     MARKETS
 ═══════════════════════════════════════ -->
-<section id="philosophers">
+<section id="markets">
   <div class="section-wrap">
     <div class="section-header reveal">
-      <span class="eyebrow" data-i18n="phil_eyebrow">The Thinkers</span>
-      <h2 data-i18n="phil_h2">Voices across centuries</h2>
+      <span class="eyebrow">What We Track</span>
+      <h2>The instruments that matter</h2>
     </div>
-    <div class="phil-grid reveal">
-      <div class="phil-card" data-initial="M">
-        <span class="phil-era">121 – 180 AD</span>
-        <h4>Marcus Aurelius</h4>
-        <p class="phil-school" data-i18n="stoicism">Stoicism</p>
+    <div class="markets-grid reveal">
+      <div class="market-card">
+        <span class="market-ticker">S&P 500</span>
+        <h4>US Equities</h4>
+        <p class="market-change mdown">Broad market · ATH zone · Ceasefire risk</p>
       </div>
-      <div class="phil-card" data-initial="N">
-        <span class="phil-era">1844 – 1900</span>
-        <h4>Friedrich Nietzsche</h4>
-        <p class="phil-school" data-i18n="existentialism">Existentialism</p>
+      <div class="market-card">
+        <span class="market-ticker">WTI / Brent</span>
+        <h4>Crude Oil</h4>
+        <p class="market-change mdown">Hormuz closed · +7% Sunday · $90+</p>
       </div>
-      <div class="phil-card" data-initial="C">
-        <span class="phil-era">1913 – 1960</span>
-        <h4>Albert Camus</h4>
-        <p class="phil-school" data-i18n="absurdism">Absurdism</p>
+      <div class="market-card">
+        <span class="market-ticker">XAU/USD</span>
+        <h4>Gold</h4>
+        <p class="market-change mup">Safe haven · $4 750 · Structural bull</p>
       </div>
-      <div class="phil-card" data-initial="E">
-        <span class="phil-era">50 – 135 AD</span>
-        <h4>Epictetus</h4>
-        <p class="phil-school" data-i18n="stoicism">Stoicism</p>
+      <div class="market-card">
+        <span class="market-ticker">VIX</span>
+        <h4>Volatility</h4>
+        <p class="market-change mdown">Fear index · Back above 20 · Elevated</p>
       </div>
-      <div class="phil-card" data-initial="B">
-        <span class="phil-era">563 – 483 BC</span>
-        <h4>Buddha</h4>
-        <p class="phil-school" data-i18n="buddhism">Buddhism</p>
+      <div class="market-card">
+        <span class="market-ticker">DAX / CAC</span>
+        <h4>Europe</h4>
+        <p class="market-change mdown">–1.1% Monday · Energy drag · Iran risk</p>
       </div>
-      <div class="phil-card" data-initial="S">
-        <span class="phil-era">470 – 399 BC</span>
-        <h4>Socrates</h4>
-        <p class="phil-school" data-i18n="dialectic">Dialectic</p>
+      <div class="market-card">
+        <span class="market-ticker">10Y UST</span>
+        <h4>US Treasuries</h4>
+        <p class="market-change mflat">4.31% · Fed independence risk · Warsh</p>
       </div>
-      <div class="phil-card" data-initial="P">
-        <span class="phil-era">1623 – 1662</span>
-        <h4>Blaise Pascal</h4>
-        <p class="phil-school" data-i18n="christian_phil">Christian Philosophy</p>
+      <div class="market-card">
+        <span class="market-ticker">EUR/USD</span>
+        <h4>FX</h4>
+        <p class="market-change mflat">1.18 · USD strong on risk-off</p>
       </div>
-      <div class="phil-card" data-initial="S">
-        <span class="phil-era">1908 – 1986</span>
-        <h4>Simone de Beauvoir</h4>
-        <p class="phil-school" data-i18n="existentialism">Existentialism</p>
+      <div class="market-card">
+        <span class="market-ticker">BTC/USD</span>
+        <h4>Bitcoin</h4>
+        <p class="market-change mup">Risk barometer · $77K · Tracking Iran</p>
       </div>
     </div>
   </div>
@@ -718,21 +848,51 @@ footer {
 <section id="instagram">
   <div class="section-wrap">
     <div class="insta-cta reveal">
-      <h2><em data-i18n="insta_h2a">Daily wisdom</em> <span data-i18n="insta_h2b">on Instagram</span></h2>
-      <p data-i18n="insta_p">A quote, a thought, a question — every day on @mentis.libra</p>
-      <a href="https://instagram.com/mentis.libra" target="_blank" class="insta-btn">
+      <h2><em>Daily signal</em> on Instagram</h2>
+      <p>1 to 3 briefs per day. Macro · Geopolitics · Scenarios · Markets.</p>
+      <span class="insta-bio">The signal behind the noise. · 🇨🇭 CEST · Not financial advice.</span>
+      <a href="https://instagram.com/themacrodesks" target="_blank" class="insta-btn">
         <svg class="insta-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        <span data-i18n="follow_btn">Follow @mentis.libra</span>
+        <span>Follow @TheMacroDesk</span>
       </a>
 
-      <!-- Sample posts preview -->
       <div class="insta-grid">
-        <div class="insta-post ip1"><q>"You have power over your mind."</q><span class="ip-author">M. Aurelius</span></div>
-        <div class="insta-post ip2"><q>"In the middle of winter I found an invincible summer."</q><span class="ip-author">Camus</span></div>
-        <div class="insta-post ip3"><q>"Become who you are."</q><span class="ip-author">Nietzsche</span></div>
-        <div class="insta-post ip4"><q>"Pain is inevitable. Suffering is a choice."</q><span class="ip-author">Buddha</span></div>
-        <div class="insta-post ip5"><q>"Confine yourself to the present."</q><span class="ip-author">M. Aurelius</span></div>
-        <div class="insta-post ip6"><q>"Know thyself."</q><span class="ip-author">Socrates</span></div>
+        <div class="insta-post">
+          <span class="ip-label">S&P Score</span>
+          <span class="ip-val">40/100</span>
+          <span class="ip-change down">Defensive</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
+        <div class="insta-post">
+          <span class="ip-label">WTI Crude</span>
+          <span class="ip-val">$90</span>
+          <span class="ip-change down">+7.1% ↑</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
+        <div class="insta-post">
+          <span class="ip-label">Decision</span>
+          <span class="ip-val" style="font-size:1.1rem;">CAUTION</span>
+          <span class="ip-change neutral">72% conf.</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
+        <div class="insta-post">
+          <span class="ip-label">Gold XAU</span>
+          <span class="ip-val">$4 750</span>
+          <span class="ip-change up">Safe Haven</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
+        <div class="insta-post">
+          <span class="ip-label">Scenarios</span>
+          <span class="ip-val" style="font-size:1rem;">🟢20 🟡45 🔴35</span>
+          <span class="ip-change neutral">%</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
+        <div class="insta-post">
+          <span class="ip-label">VIX</span>
+          <span class="ip-val">> 20</span>
+          <span class="ip-change down">↑ Alert</span>
+          <span class="ip-tag">@TheMacroDesk</span>
+        </div>
       </div>
     </div>
   </div>
@@ -742,265 +902,39 @@ footer {
      FOOTER
 ═══════════════════════════════════════ -->
 <footer>
-  <span class="footer-logo">MENTIS · LIBRA</span>
-  <p class="footer-tagline" data-i18n="footer_tag">Balance of Mind — Ancient Wisdom for Modern Life</p>
+  <span class="footer-logo">THE MACRO DESK</span>
+  <p class="footer-tagline">The signal behind the noise — Macro · Geopolitics · Markets</p>
   <div class="footer-links">
-    <a href="#about"        data-i18n="nav_about">About</a>
-    <a href="#articles"     data-i18n="nav_articles">Articles</a>
-    <a href="#quote"        data-i18n="nav_quote">Daily Quote</a>
-    <a href="#philosophers" data-i18n="nav_phil">Philosophers</a>
-    <a href="https://instagram.com/mentis.libra" target="_blank">Instagram</a>
+    <a href="#about">About</a>
+    <a href="#briefs">Daily Briefs</a>
+    <a href="#signal">Live Signal</a>
+    <a href="#markets">Markets</a>
+    <a href="https://instagram.com/themacrodesks" target="_blank">Instagram</a>
   </div>
-  <p class="footer-copy">© 2026 Mentis Libra · <span data-i18n="footer_copy">All rights reserved</span></p>
+  <p class="footer-disclaimer">
+    All content published on this site and on @TheMacroDesk is for informational purposes only.
+    Nothing here constitutes financial advice, investment recommendation, or solicitation.
+    Past analysis does not guarantee future accuracy. Always do your own research.
+    Based in Switzerland · All times in CEST (UTC+2).
+  </p>
+  <p class="footer-copy">© 2026 The Macro Desk · All rights reserved</p>
 </footer>
 
 <!-- ═══════════════════════════════════════
      JAVASCRIPT
 ═══════════════════════════════════════ -->
 <script>
-// ── TRANSLATIONS ─────────────────────────────────────────────
-const i18n = {
-  en: {
-    nav_about:"About", nav_articles:"Articles", nav_quote:"Daily Quote", nav_phil:"Philosophers",
-    hero_tag:"Ancient Wisdom · Modern Life", hero_h1a:"The Balance", hero_h1b:"of the Mind",
-    hero_sub:"Philosophy as a way of life. The wisdom of the great thinkers, made alive for every day.",
-    hero_quote:""You have power over your mind — not outside events. Realize this, and you will find strength."",
-    scroll:"Scroll",
-    about_label:"The Mission",
-    about_h3:"Philosophy shouldn't live only in universities.",
-    about_p1:"Mentis Libra was born from a simple conviction: the great thinkers of antiquity had already understood what we are only now rediscovering — about anxiety, resilience, meaning, and the art of living.",
-    about_p2:"Every article, every quote, every reflection here is an invitation to pause, to think, and to find your own balance.",
-    pillars_label:"Three Pillars",
-    pillar1_h:"Inspiration", pillar1_p:"Quotes and reflections that touch the heart before the mind.",
-    pillar2_h:"Education",   pillar2_p:"Philosophical ideas explained simply, without losing their depth.",
-    pillar3_h:"Dialogue",    pillar3_p:"Questions that invite you to reflect and discover your own truth.",
-    articles_eyebrow:"Latest Articles", articles_h2:"Thoughts worth dwelling on",
-    art1_h:"Marcus Aurelius and the Art of Letting Go",
-    art1_p:"Two thousand years ago, the most powerful man in the world wrote in his journal about fear, impermanence, and the only thing we truly control.",
-    art2_h:"Camus: Finding Joy in the Absurd",
-    art2_p:"What does it mean to live fully when nothing has an inherent meaning? Albert Camus offers an answer that still resonates a century later.",
-    art3_h:"The Buddha's Teaching on Suffering and Choice",
-    art3_p:"Pain is inevitable. Suffering, according to the Buddha, is a choice. Here is the distinction that changes everything.",
-    art4_h:"Epictetus: Freedom Begins in the Mind",
-    art4_p:"Born a slave, he became one of the freest men who ever lived. The philosophy of Epictetus is a lesson in what no one can ever take from you.",
-    art5_h:"Become Who You Are",
-    art5_p:"Three words, the shortest sentence, the deepest philosophy. Nietzsche does not ask you to improve yourself. He asks you to discover yourself.",
-    art6_h:"The Heart Has Its Reasons",
-    art6_p:"Pascal understood something that neuroscience confirms today: our deepest decisions are not made by reason. And that is not a flaw — it is our humanity.",
-    read_more:"Read more",
-    quote_eyebrow:"Daily Wisdom", quote_h2:"One thought to carry with you",
-    prev_q:"← Previous", next_q:"Next →",
-    phil_eyebrow:"The Thinkers", phil_h2:"Voices across centuries",
-    stoicism:"Stoicism", existentialism:"Existentialism", absurdism:"Absurdism",
-    buddhism:"Buddhism", dialectic:"Dialectic", christian_phil:"Christian Philosophy",
-    insta_h2a:"Daily wisdom", insta_h2b:"on Instagram",
-    insta_p:"A quote, a thought, a question — every day on @mentis.libra",
-    follow_btn:"Follow @mentis.libra",
-    footer_tag:"Balance of Mind — Ancient Wisdom for Modern Life",
-    footer_copy:"All rights reserved"
-  },
-  fr: {
-    nav_about:"À propos", nav_articles:"Articles", nav_quote:"Citation du jour", nav_phil:"Philosophes",
-    hero_tag:"Sagesse antique · Vie moderne", hero_h1a:"L'Équilibre", hero_h1b:"de l'Esprit",
-    hero_sub:"La philosophie comme art de vivre. La sagesse des grands penseurs, vivante au quotidien.",
-    hero_quote:"« Tu as du pouvoir sur ton esprit — pas sur les événements extérieurs. Comprends cela, et tu trouveras ta force. »",
-    scroll:"Défiler",
-    about_label:"La Mission",
-    about_h3:"La philosophie ne devrait pas vivre uniquement dans les universités.",
-    about_p1:"Mentis Libra est née d'une conviction simple : les grands penseurs de l'Antiquité avaient déjà compris ce que nous redécouvrons seulement maintenant — sur l'anxiété, la résilience, le sens et l'art de vivre.",
-    about_p2:"Chaque article, chaque citation, chaque réflexion ici est une invitation à s'arrêter, à penser et à trouver son propre équilibre.",
-    pillars_label:"Trois Piliers",
-    pillar1_h:"Inspiration", pillar1_p:"Des citations et réflexions qui touchent le cœur avant l'esprit.",
-    pillar2_h:"Éducation",   pillar2_p:"Des idées philosophiques expliquées simplement, sans perdre leur profondeur.",
-    pillar3_h:"Dialogue",    pillar3_p:"Des questions qui invitent à réfléchir et à découvrir sa propre vérité.",
-    articles_eyebrow:"Derniers Articles", articles_h2:"Des pensées qui méritent qu'on s'y attarde",
-    art1_h:"Marc Aurèle et l'art du lâcher-prise",
-    art1_p:"Il y a deux mille ans, l'homme le plus puissant du monde écrivait dans son journal sur la peur, l'impermanence et la seule chose que l'on contrôle vraiment.",
-    art2_h:"Camus : trouver la joie dans l'absurde",
-    art2_p:"Que signifie vivre pleinement quand rien n'a de sens inhérent ? Albert Camus offre une réponse qui résonne encore un siècle plus tard.",
-    art3_h:"L'enseignement du Bouddha sur la souffrance et le choix",
-    art3_p:"La douleur est inévitable. La souffrance, selon le Bouddha, est un choix. Voici la distinction qui change tout.",
-    art4_h:"Épictète : la liberté commence dans l'esprit",
-    art4_p:"Né esclave, il devint l'un des hommes les plus libres qui aient jamais vécu. La philosophie d'Épictète est une leçon sur ce que personne ne peut jamais vous enlever.",
-    art5_h:"Deviens ce que tu es",
-    art5_p:"Trois mots, la phrase la plus courte, la philosophie la plus profonde. Nietzsche ne te demande pas de t'améliorer. Il te demande de te découvrir.",
-    art6_h:"Le cœur a ses raisons",
-    art6_p:"Pascal a compris quelque chose que les neurosciences confirment aujourd'hui : nos décisions les plus profondes ne sont pas prises par la raison. Et ce n'est pas un défaut — c'est notre humanité.",
-    read_more:"Lire la suite",
-    quote_eyebrow:"Sagesse du jour", quote_h2:"Une pensée à porter avec soi",
-    prev_q:"← Précédent", next_q:"Suivant →",
-    phil_eyebrow:"Les Penseurs", phil_h2:"Des voix à travers les siècles",
-    stoicism:"Stoïcisme", existentialism:"Existentialisme", absurdism:"Absurdisme",
-    buddhism:"Bouddhisme", dialectic:"Dialectique", christian_phil:"Philosophie chrétienne",
-    insta_h2a:"Sagesse quotidienne", insta_h2b:"sur Instagram",
-    insta_p:"Une citation, une pensée, une question — chaque jour sur @mentis.libra",
-    follow_btn:"Suivre @mentis.libra",
-    footer_tag:"Équilibre de l'Esprit — Sagesse antique pour la vie moderne",
-    footer_copy:"Tous droits réservés"
-  },
-  it: {
-    nav_about:"Chi siamo", nav_articles:"Articoli", nav_quote:"Citazione del giorno", nav_phil:"Filosofi",
-    hero_tag:"Saggezza antica · Vita moderna", hero_h1a:"L'Equilibrio", hero_h1b:"della Mente",
-    hero_sub:"La filosofia come stile di vita. La saggezza dei grandi pensatori, viva ogni giorno.",
-    hero_quote:"«Hai potere sulla tua mente — non sugli eventi esterni. Renditi conto di questo e troverai la forza.»",
-    scroll:"Scorri",
-    about_label:"La Missione",
-    about_h3:"La filosofia non dovrebbe vivere solo nelle università.",
-    about_p1:"Mentis Libra è nata da una semplice convinzione: i grandi pensatori dell'antichità avevano già capito ciò che stiamo riscoprendo solo ora — sull'ansia, la resilienza, il significato e l'arte di vivere.",
-    about_p2:"Ogni articolo, ogni citazione, ogni riflessione qui è un invito a fermarsi, a pensare e a trovare il proprio equilibrio.",
-    pillars_label:"Tre Pilastri",
-    pillar1_h:"Ispirazione", pillar1_p:"Citazioni e riflessioni che toccano il cuore prima della mente.",
-    pillar2_h:"Educazione",  pillar2_p:"Idee filosofiche spiegate semplicemente, senza perdere la loro profondità.",
-    pillar3_h:"Dialogo",     pillar3_p:"Domande che invitano a riflettere e scoprire la propria verità.",
-    articles_eyebrow:"Ultimi Articoli", articles_h2:"Pensieri che vale la pena approfondire",
-    art1_h:"Marco Aurelio e l'arte del lasciar andare",
-    art1_p:"Duemila anni fa, l'uomo più potente del mondo scriveva nel suo diario della paura, dell'impermanenza e dell'unica cosa che controlliamo davvero.",
-    art2_h:"Camus: trovare la gioia nell'assurdo",
-    art2_p:"Cosa significa vivere pienamente quando nulla ha un significato intrinseco? Albert Camus offre una risposta che risuona ancora un secolo dopo.",
-    art3_h:"L'insegnamento del Buddha sulla sofferenza e la scelta",
-    art3_p:"Il dolore è inevitabile. La sofferenza, secondo il Buddha, è una scelta. Ecco la distinzione che cambia tutto.",
-    art4_h:"Epitteto: la libertà inizia nella mente",
-    art4_p:"Nato schiavo, divenne uno degli uomini più liberi che siano mai vissuti. La filosofia di Epitteto è una lezione su ciò che nessuno può mai toglierti.",
-    art5_h:"Diventa ciò che sei",
-    art5_p:"Tre parole, la frase più breve, la filosofia più profonda. Nietzsche non ti chiede di migliorarti. Ti chiede di scoprirti.",
-    art6_h:"Il cuore ha le sue ragioni",
-    art6_p:"Pascal ha capito qualcosa che le neuroscienze confermano oggi: le nostre decisioni più profonde non sono prese dalla ragione. E questo non è un difetto — è la nostra umanità.",
-    read_more:"Leggi di più",
-    quote_eyebrow:"Saggezza quotidiana", quote_h2:"Un pensiero da portare con sé",
-    prev_q:"← Precedente", next_q:"Successivo →",
-    phil_eyebrow:"I Pensatori", phil_h2:"Voci attraverso i secoli",
-    stoicism:"Stoicismo", existentialism:"Esistenzialismo", absurdism:"Assurdismo",
-    buddhism:"Buddhismo", dialectic:"Dialettica", christian_phil:"Filosofia cristiana",
-    insta_h2a:"Saggezza quotidiana", insta_h2b:"su Instagram",
-    insta_p:"Una citazione, un pensiero, una domanda — ogni giorno su @mentis.libra",
-    follow_btn:"Segui @mentis.libra",
-    footer_tag:"Equilibrio della Mente — Saggezza antica per la vita moderna",
-    footer_copy:"Tutti i diritti riservati"
-  },
-  es: {
-    nav_about:"Acerca de", nav_articles:"Artículos", nav_quote:"Cita del día", nav_phil:"Filósofos",
-    hero_tag:"Sabiduría antigua · Vida moderna", hero_h1a:"El Equilibrio", hero_h1b:"de la Mente",
-    hero_sub:"La filosofía como forma de vida. La sabiduría de los grandes pensadores, viva cada día.",
-    hero_quote:"«Tienes poder sobre tu mente, no sobre los eventos externos. Date cuenta de esto y encontrarás la fuerza.»",
-    scroll:"Desplazar",
-    about_label:"La Misión",
-    about_h3:"La filosofía no debería vivir solo en las universidades.",
-    about_p1:"Mentis Libra nació de una convicción simple: los grandes pensadores de la antigüedad ya habían entendido lo que solo ahora estamos redescubriendo — sobre la ansiedad, la resiliencia, el sentido y el arte de vivir.",
-    about_p2:"Cada artículo, cada cita, cada reflexión aquí es una invitación a detenerse, a pensar y a encontrar su propio equilibrio.",
-    pillars_label:"Tres Pilares",
-    pillar1_h:"Inspiración", pillar1_p:"Citas y reflexiones que tocan el corazón antes que la mente.",
-    pillar2_h:"Educación",   pillar2_p:"Ideas filosóficas explicadas de forma sencilla, sin perder su profundidad.",
-    pillar3_h:"Diálogo",     pillar3_p:"Preguntas que invitan a reflexionar y descubrir su propia verdad.",
-    articles_eyebrow:"Últimos Artículos", articles_h2:"Pensamientos que merecen atención",
-    art1_h:"Marco Aurelio y el arte de soltar",
-    art1_p:"Hace dos mil años, el hombre más poderoso del mundo escribía en su diario sobre el miedo, la impermanencia y la única cosa que realmente controlamos.",
-    art2_h:"Camus: encontrar la alegría en el absurdo",
-    art2_p:"¿Qué significa vivir plenamente cuando nada tiene un significado inherente? Albert Camus ofrece una respuesta que resuena un siglo después.",
-    art3_h:"La enseñanza del Buda sobre el sufrimiento y la elección",
-    art3_p:"El dolor es inevitable. El sufrimiento, según el Buda, es una elección. Aquí está la distinción que lo cambia todo.",
-    art4_h:"Epicteto: la libertad empieza en la mente",
-    art4_p:"Nacido esclavo, se convirtió en uno de los hombres más libres que jamás hayan vivido. La filosofía de Epicteto es una lección sobre lo que nadie puede quitarte nunca.",
-    art5_h:"Conviértete en quien eres",
-    art5_p:"Tres palabras, la frase más corta, la filosofía más profunda. Nietzsche no te pide que te mejores. Te pide que te descubras.",
-    art6_h:"El corazón tiene sus razones",
-    art6_p:"Pascal entendió algo que las neurociencias confirman hoy: nuestras decisiones más profundas no las toma la razón. Y eso no es un defecto — es nuestra humanidad.",
-    read_more:"Leer más",
-    quote_eyebrow:"Sabiduría diaria", quote_h2:"Un pensamiento para llevar contigo",
-    prev_q:"← Anterior", next_q:"Siguiente →",
-    phil_eyebrow:"Los Pensadores", phil_h2:"Voces a través de los siglos",
-    stoicism:"Estoicismo", existentialism:"Existencialismo", absurdism:"Absurdismo",
-    buddhism:"Budismo", dialectic:"Dialéctica", christian_phil:"Filosofía cristiana",
-    insta_h2a:"Sabiduría diaria", insta_h2b:"en Instagram",
-    insta_p:"Una cita, un pensamiento, una pregunta — cada día en @mentis.libra",
-    follow_btn:"Seguir @mentis.libra",
-    footer_tag:"Equilibrio de la Mente — Sabiduría antigua para la vida moderna",
-    footer_copy:"Todos los derechos reservados"
-  }
+// ── HERO STATS (can be updated daily) ──────────────────────
+const todayData = {
+  score: "53",
+  signal: "CAUTION",
+  confidence: "72%"
 };
+document.getElementById('hero-score-val').textContent = todayData.score;
+document.getElementById('hero-signal-val').textContent = todayData.signal;
+document.getElementById('hero-conf-val').textContent = todayData.confidence;
 
-let currentLang = 'en';
-
-function setLang(lang, btn) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const t = i18n[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
-  });
-  // Update quotes language
-  updateQuoteDisplay();
-}
-
-// ── DAILY QUOTES ─────────────────────────────────────────────
-const quotes = {
-  en: [
-    { q:""The happiness of your life depends upon the quality of your thoughts."", a:"— Marcus Aurelius" },
-    { q:""In the middle of winter I found there was, within me, an invincible summer."", a:"— Albert Camus" },
-    { q:""He who has a why to live can bear almost any how."", a:"— Friedrich Nietzsche" },
-    { q:""Men are disturbed not by things, but by the view which they take of them."", a:"— Epictetus" },
-    { q:""Pain is certain. Suffering is optional."", a:"— Buddha" },
-    { q:""The unexamined life is not worth living."", a:"— Socrates" },
-    { q:""Waste no more time arguing about what a good man should be. Be one."", a:"— Marcus Aurelius" },
-  ],
-  fr: [
-    { q:"« Le bonheur de ta vie dépend de la qualité de tes pensées. »", a:"— Marc Aurèle" },
-    { q:"« Au milieu de l'hiver, j'appris enfin qu'il y avait en moi un été invincible. »", a:"— Albert Camus" },
-    { q:"« Celui qui a un pourquoi peut supporter presque n'importe quel comment. »", a:"— Friedrich Nietzsche" },
-    { q:"« Les hommes ne sont pas troublés par les événements, mais par l'opinion qu'ils en ont. »", a:"— Épictète" },
-    { q:"« La douleur est certaine. La souffrance est facultative. »", a:"— Bouddha" },
-    { q:"« Une vie sans examen ne vaut pas la peine d'être vécue. »", a:"— Socrate" },
-    { q:"« Ne perds plus de temps à débattre de ce que devrait être un homme bon. Sois-le. »", a:"— Marc Aurèle" },
-  ],
-  it: [
-    { q:"«La felicità della tua vita dipende dalla qualità dei tuoi pensieri.»", a:"— Marco Aurelio" },
-    { q:"«Nel mezzo dell'inverno ho scoperto che dentro di me c'era un'estate invincibile.»", a:"— Albert Camus" },
-    { q:"«Chi ha un perché può sopportare quasi qualsiasi come.»", a:"— Friedrich Nietzsche" },
-    { q:"«Gli uomini non sono turbati dalle cose, ma dalle opinioni che hanno delle cose.»", a:"— Epitteto" },
-    { q:"«Il dolore è certo. La sofferenza è facoltativa.»", a:"— Buddha" },
-    { q:"«Una vita senza esame non vale la pena di essere vissuta.»", a:"— Socrate" },
-    { q:"«Non sprecare altro tempo a discutere di com'è fatto un buon uomo. Sii uno.»", a:"— Marco Aurelio" },
-  ],
-  es: [
-    { q:"«La felicidad de tu vida depende de la calidad de tus pensamientos.»", a:"— Marco Aurelio" },
-    { q:"«En medio del invierno descubrí que había en mí un verano invencible.»", a:"— Albert Camus" },
-    { q:"«Quien tiene un porqué puede soportar casi cualquier cómo.»", a:"— Friedrich Nietzsche" },
-    { q:"«Los hombres no se turban por las cosas, sino por las opiniones que tienen de las cosas.»", a:"— Epicteto" },
-    { q:"«El dolor es cierto. El sufrimiento es opcional.»", a:"— Buda" },
-    { q:"«Una vida sin examen no merece ser vivida.»", a:"— Sócrates" },
-    { q:"«No pierdas más tiempo argumentando cómo es un buen hombre. Sé uno.»", a:"— Marco Aurelio" },
-  ]
-};
-
-let qIndex = 0;
-
-function updateQuoteDisplay() {
-  const q = quotes[currentLang][qIndex];
-  const el = document.getElementById('daily-quote');
-  const au = document.getElementById('daily-author');
-  el.style.opacity = '0'; au.style.opacity = '0';
-  setTimeout(() => {
-    el.textContent = q.q; au.textContent = q.a;
-    el.style.transition = 'opacity 0.5s'; au.style.transition = 'opacity 0.5s';
-    el.style.opacity = '1'; au.style.opacity = '1';
-  }, 300);
-}
-
-function nextQuote() {
-  qIndex = (qIndex + 1) % quotes[currentLang].length;
-  updateQuoteDisplay();
-}
-function prevQuote() {
-  qIndex = (qIndex - 1 + quotes[currentLang].length) % quotes[currentLang].length;
-  updateQuoteDisplay();
-}
-
-// Auto-cycle every 8s
-setInterval(nextQuote, 8000);
-
-// ── SCROLL REVEAL ─────────────────────────────────────────────
+// ── SCROLL REVEAL ────────────────────────────────────────────
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
